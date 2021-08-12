@@ -1,6 +1,7 @@
 var Book = require('../models/book');
 var Author = require('../models/author');
 var Genre = require('../models/genre');
+var Publisher = require('../models/publisher');
 var BookInstance = require('../models/bookinstance');
 const { body,validationResult } = require('express-validator');
 
@@ -49,6 +50,7 @@ exports.book_detail = function(req, res, next) {
             Book.findById(req.params.id)
               .populate('author')
               .populate('genre')
+              .populate('publisher')
               .exec(callback);
         },
         book_instance: function(callback) {
